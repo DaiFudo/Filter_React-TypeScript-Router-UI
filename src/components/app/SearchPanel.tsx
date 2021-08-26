@@ -62,7 +62,7 @@ export const SearchPanel: React.FC<SearchPanelProps> = (props) => {
         onKeyPress={keyPressHandler}
         value={request}
         type="text"
-        placeholder="Hi there!"
+        placeholder="ФИЛЬТРУЕМ?"
         id="title"
         className="app-input"
       />
