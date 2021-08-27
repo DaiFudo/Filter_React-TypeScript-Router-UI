@@ -10,11 +10,10 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { styled } from "@material-ui/core/styles";
 
-const StyleContainer = styled(Container)({
-  backgroundColor: "#cfe8fc",
-  height: "100vh",
-  position: "absolute",
-});
+  const StyleContainer = styled(Container) ({
+    backgroundColor: "#cfe8fc",
+    height: "100vh",
+  });
 
 export const App: React.FC = () => {
   const history = useHistory();

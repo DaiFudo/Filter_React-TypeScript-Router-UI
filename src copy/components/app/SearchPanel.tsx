@@ -1,74 +1,44 @@
 import React, { useState, MouseEvent } from "react";
-import { Button, Box, TextField, styled } from "@material-ui/core";
 
-const InputStyle = styled(TextField)({
-  fontSize: "2rem",
-  border: "2px solid grey",
-  borderRadius: "10px",
-  padding: "10px",
-  backgroundColor: "white",
-});
-
-const BoxStyle = styled(Box)({
-  textTransform: "uppercase",
-  paddingTop: "50px",
-  margin: "0 auto",
-  display: "flex",
-  flexDirection: "column",
-  textAlign: "center",
-  fontSize: "2rem",
-  padding: "10px",
-  width: "350px",
-  height: "350px",
-});
-
-const MyButton = styled(Button)({
-  marginTop: "10px",
-  background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-  color: "white",
-  height: 48,
-  padding: "0 30px",
-  display: "flex",
-  margin: "0 auto",
-});
+import {MyButton, BoxStyle,  InputStyle} from '../styles/styles'
 
 interface SearchPanelProps {
-  onAdd(request: string): void;
-}
+  onAdd(text: string): void;
+  }
 
 export const SearchPanel: React.FC<SearchPanelProps> = (props) => {
-  const [request, setRequest] = useState<string>("");
+  const [text, setText] = useState<string>("");
 
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRequest(e.target.value);
-  };
-  const keyPressHandler = (e: React.KeyboardEvent) => {
+  const Handler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+    };
+  const PressHandler = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      props.onAdd(request);
-      setRequest("");
-    }
-  };
-  const changeHandlerBtn = (e: MouseEvent) => {
+      props.onAdd(text);
+      setText("");
+      }
+    };
+  const HandlerBtn = (e: MouseEvent) => {
     e.preventDefault();
-    props.onAdd(request);
-    setRequest("");
-  };
+    props.onAdd(text);
+    setText("");
+    };
 
   return (
-    <BoxStyle className="app-form">
+    <BoxStyle className="wrapper">
       <InputStyle
-        onChange={changeHandler}
-        onKeyPress={keyPressHandler}
-        value={request}
+        onChange={Handler}
+        onKeyPress={PressHandler}
+        value={text}
         type="text"
         placeholder="ФИЛЬТРУЕМ?"
         id="title"
-        className="app-input"
+        className="input"
       />
-      <MyButton onClick={changeHandlerBtn} type="submit" className="btn">
+      <MyButton onClick={HandlerBtn} type="submit" className="search-button">
         Поиск
       </MyButton>
     </BoxStyle>
-  );
-};
+    );
+  };

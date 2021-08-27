@@ -1,24 +1,18 @@
 import React from "react";
-import { SearchPanel } from "./components/app/SearchPanel";
-import { Ip } from "./components/app/Ip";
-import { Mail } from "./components/app/Mail";
-import { Nickname } from "./components/app/Nickname";
-import { RealName } from "./components/app/RealName";
-import { Phone } from "./components/app/Phone";
 import { Route, Switch, useHistory } from "react-router-dom";
-import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { styled } from "@material-ui/core/styles";
 
-const StyleContainer = styled(Container)({
-  backgroundColor: "#cfe8fc",
-  height: "100vh",
-  position: "absolute",
-});
+import { SearchPanel } from "./components/app/SearchPanel";
+import  Ip  from "./components/app/Ip";
+import  Mail  from "./components/app/Mail";
+import  Nickname  from "./components/app/Nickname";
+import  RealName  from "./components/app/RealName";
+import  Phone  from "./components/app/Phone";
+
+import {StyleContainer, StyleCssBaseline, } from '../src copy/components/styles/styles'
 
 export const App: React.FC = () => {
   const history = useHistory();
-  const addHandler = (request: string) => {
+  const addHandler = (text: string) => {
     const regNickname = new RegExp(/^[^0-9]\w+$/),
       regName = new RegExp(/^[a-z ,.'-]+$/i),
       regPhone = new RegExp(
@@ -31,15 +25,15 @@ export const App: React.FC = () => {
         /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
       );
 
-    if (regNickname.test(request) === true) {
+    if (regNickname.test(text) === true) {
       history.push("/Nickname");
-    } else if (regMail.test(request) === true) {
+    } else if (regMail.test(text) === true) {
       history.push("/Mail");
-    } else if (regName.test(request) === true) {
+    } else if (regName.test(text) === true) {
       history.push("/Name");
-    } else if (regIp.test(request) === true) {
+    } else if (regIp.test(text) === true) {
       history.push("/Ip");
-    } else if (regPhone.test(request) === true) {
+    } else if (regPhone.test(text) === true) {
       history.push("/Phone");
     } else {
       history.push("/");
@@ -48,7 +42,7 @@ export const App: React.FC = () => {
 
   return (
     <>
-      <CssBaseline />
+      <StyleCssBaseline />
       <StyleContainer maxWidth="xl">
         <Switch>
           <Route
